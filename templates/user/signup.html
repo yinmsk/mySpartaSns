@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    회원가입
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center"> 회원가입 </h2>
+{#            form 태그는 화면의 데이터를 서버로 전송할 때 많이 사용된다#}
+{#            회원정보를 저장하고 싶으니까 메소드는 포스트#}
+{#            어떤 url로 전달될 건지도 적어주어야 하는데 그렇게 하기 위해서는 action을 사용한다 뒤에 / 없음 오류남 유의!!#}
+            <form class="form-area" method="post" action="/sign-up/">
+{#                데이터 post할때는 보안을 위해 {% csrf_token %}사용한다.#}
+                {% csrf_token %}
+                <div class="form-group mt-2 mb-2">
+                    <label for="username">이름</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="password2">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="password2" name="password2">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="bio">나를 한마디로</label>
+                    <input type="text" class="form-control" id="bio" name="bio">
+                </div>
+                <hr>
+                <div style="float: right">
+{#                    submit 버튼은 from 태그 안에 있으면 해달하는 from을 실행시켜 주는 역할을 한다#}
+{#                    버튼을 누르고 있으면 이곳을 감싸고 있는 from 태그가 실행된다#}
+{#                    action에 데이터를 보내주는 역할을 한다#}
+                    <button type="submit" class="btn btn-primary">회원가입</button>
+                    <a href="/sign-in" class="btn btn-secondary">로그인 페이지로</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
